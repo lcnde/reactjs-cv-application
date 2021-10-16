@@ -1,0 +1,33 @@
+$orange: #CC9543;
+
+@mixin column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.App {
+  @include column-center;
+  padding: 20px 0;
+  color: $orange;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-shadow: 5px 6px 10px 3px rgba(0, 0, 0, 0.25);
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.header {
+  @include column-center;
+
+  .logo {
+    width: max-content;
+  }
+  .title {
+    font-weight: bold;
+  }
+}
+
+div {
+  font-size: 40px;
+}
