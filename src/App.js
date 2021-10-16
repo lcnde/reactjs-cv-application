@@ -9,7 +9,18 @@ function App() {
         <h1 className="title">CV APPLICATION</h1>
       </div>
       <form>
-        <div className=""></div>
+        <div className="single-input">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname"></input>
+        </div>
+        <div className="single-input">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname"></input>
+        </div>
+        <div className="single-input long-input">
+          <label for="addr1">Address Line 1</label>
+          <input type="text" id="addr1" name="addr1"></input>
+        </div>
       </form>
     </div>
   );
