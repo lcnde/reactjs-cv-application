@@ -4,12 +4,26 @@ import odinLogo from './assets/logo.png';
 import addIcon from './assets/add-icon.png';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      showEducation: false,
+      showWork: false,
+      showAddButton: false,
+    };
+    this.addEducation = this.addEducation.bind(this);
+  }
 
-    }
+  addEducation() {
+    this.setState({
+      showEducation: true,
+    })
+    console.log(this.state.showEducation)
+  }
+
+  componentDidMount() {
+    this.setState({})
   }
 
   render() {
@@ -62,7 +76,11 @@ class App extends Component {
           </div>
           <div className="single-input long-input">
             <span>Education (optional)</span>
-            <div className="input-mock">
+            {this.state.addEducation ? 
+              console.log('addEducation condition works') :
+              null
+            }
+            <div className="input-mock" onClick={this.addEducation}>
               <img className="add-icon" src={addIcon} alt="Icon that displays a + sign" />
               <span>Add</span>
             </div>
