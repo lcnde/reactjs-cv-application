@@ -22,9 +22,7 @@ class App extends Component {
     console.log(this.state.showEducation)
   }
 
-  componentDidMount() {
-    this.setState({})
-  }
+
 
   render() {
     return (
@@ -35,39 +33,39 @@ class App extends Component {
         </div>
         <form>
           <div className="single-input">
-            <label for="fname">First Name</label>
+            <label htmlFor="fname">First Name</label>
             <input type="text" id="fname" name="fname"></input>
           </div>
           <div className="single-input">
-            <label for="lname">Last Name</label>
+            <label htmlFor="lname">Last Name</label>
             <input type="text" id="lname" name="lname"></input>
           </div>
           <div className="single-input long-input">
-            <label for="addr1">Address Line 1</label>
+            <label htmlFor="addr1">Address Line 1</label>
             <input type="text" id="addr1" name="addr1"></input>
           </div>
           <div className="single-input long-input">
-            <label for="addr2">Address Line 2</label>
+            <label htmlFor="addr2">Address Line 2</label>
             <input type="text" id="addr2" name="addr2"></input>
           </div>
           <div className="single-input">
-            <label for="city">Town/City</label>
+            <label htmlFor="city">Town/City</label>
             <input type="text" id="city" name="city"></input>
           </div>
           <div className="single-input">
-            <label for="postal-code">Postal Code</label>
+            <label htmlFor="postal-code">Postal Code</label>
             <input type="text" id="postal-code" name="postal-code"></input>
           </div>
           <div className="single-input">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input type="text" id="email" name="email"></input>
           </div>
           <div className="single-input">
-            <label for="phone">Phone</label>
+            <label htmlFor="phone">Phone</label>
             <input type="tel" id="phone" name="phone"></input>
           </div>
           <div className="single-input long-input">
-            <label for="occupation">Current occupation</label>
+            <label htmlFor="occupation">Current occupation</label>
             <select id="occupation" name="cars">
               <option value="" disabled selected>Employed / Not employed</option>
               <option value="employed">Employed</option>
@@ -76,7 +74,7 @@ class App extends Component {
           </div>
           <div className="single-input long-input">
             <span>Education (optional)</span>
-            {this.state.addEducation ? 
+            {this.state.showEducation ? 
               console.log('addEducation condition works') :
               null
             }
