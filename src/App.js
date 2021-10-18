@@ -25,6 +25,16 @@ class App extends Component {
 
 
   render() {
+    const closedEducationForm = () => {
+      return (
+        <div className="input-mock" onClick={this.addEducation}>
+          <img className="add-icon" src={addIcon} alt="Icon that displays a + sign" />
+          <span>Add</span>
+        </div>
+      )
+    }
+
+
     return (
       <div className="App">
         <div className="header">
@@ -75,13 +85,10 @@ class App extends Component {
           <div className="single-input long-input">
             <span>Education (optional)</span>
             {this.state.showEducation ? 
-              console.log('addEducation condition works') :
-              null
+              null :
+              closedEducationForm()
             }
-            <div className="input-mock" onClick={this.addEducation}>
-              <img className="add-icon" src={addIcon} alt="Icon that displays a + sign" />
-              <span>Add</span>
-            </div>
+
           </div>
           <div className="single-input long-input">
             <span>Work Experience</span>

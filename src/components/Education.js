@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
 class Education extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state = {};
   }
 
   render() {
     return (
-      <div></div>
+      <div>
+
+      </div>
     )
   }
 }
