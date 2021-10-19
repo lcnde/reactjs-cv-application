@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
+import './styles/Education.scss';
 import odinLogo from './assets/logo.png';
 import addIcon from './assets/add-icon.png';
+import Education from './components/Education.js';
 
 class App extends Component {
   constructor(props) {
@@ -85,7 +87,7 @@ class App extends Component {
           <div className="single-input long-input">
             <span>Education (optional)</span>
             {this.state.showEducation ? 
-              null :
+              <Education /> :
               closedEducationForm()
             }
 
@@ -97,7 +99,7 @@ class App extends Component {
               <span>Add</span>
             </div>
           </div>
-          <button className="long-input" id="send" type="submit" value="Submit">Send</button>
+          <button className="long-input send" type="submit" value="Submit">Send</button>
         </form>
       </div>
     );

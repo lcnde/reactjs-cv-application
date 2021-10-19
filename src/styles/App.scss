@@ -84,7 +84,7 @@ form {
       user-select: none;
     }
   }
-  #send {
+  .send {
     width: 120px;
     height: 40px;
     background-color: $orange;
@@ -93,5 +93,12 @@ form {
     font-size: 18px;
     font-weight: bold;
     border-radius: 100px;
+    cursor: pointer;
+  }
+  .add-button {
+    background-color: green;
+  }
+  .cancel-button {
+    background-color: red;
   }
 }
