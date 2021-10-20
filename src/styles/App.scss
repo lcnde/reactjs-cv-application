@@ -33,7 +33,7 @@ h1 {
   }
 }
 
-form {
+form, .form {
   color: black;
   width: 100%;
   display: grid;
@@ -42,63 +42,63 @@ form {
   row-gap: 40px;
   font-size: 18px;
   padding: 40px 0;
+}
 
-  .long-input {
-    grid-column: 1/3;
-  }
-  .single-input {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 0 20px;
+.long-input {
+  grid-column: 1/3;
+}
+.single-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 20px;
 
-    label, span, select {
-      color: $text-gray;
-    }
-    input, select, .input-mock {
-      border: none;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-      width: 100%;
-      box-sizing: border-box;
-      height: 30px;
-      font-size: 16px;
-      padding: 0 5px;
-    }
-    .input-mock {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      color: $text-gray;
-      padding: 0 10px;
-      gap: 5px;
-      cursor: pointer;
-      //makes text unseletable since it is supposed to act like a button
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+  label, span, select {
+    color: $text-gray;
   }
-  .send {
-    width: 120px;
-    height: 40px;
-    background-color: $orange;
-    color: white;
+  input, select, .input-mock {
     border: none;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 100px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    width: 100%;
+    box-sizing: border-box;
+    height: 30px;
+    font-size: 16px;
+    padding: 0 5px;
+  }
+  .input-mock {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: $text-gray;
+    padding: 0 10px;
+    gap: 5px;
     cursor: pointer;
+    //makes text unseletable since it is supposed to act like a button
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
-  .add-button {
-    background-color: green;
-  }
-  .cancel-button {
-    background-color: red;
-  }
+}
+.send {
+  width: 120px;
+  height: 40px;
+  background-color: $orange;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.add-button {
+  background-color: green;
+}
+.cancel-button {
+  background-color: red;
 }

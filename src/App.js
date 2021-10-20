@@ -15,6 +15,7 @@ class App extends Component {
       showAddButton: false,
     };
     this.addEducation = this.addEducation.bind(this);
+    this.closeEducationForm = this.closeEducationForm.bind(this);
   }
 
   addEducation() {
@@ -22,6 +23,28 @@ class App extends Component {
       showEducation: true,
     })
     console.log(this.state.showEducation)
+  }
+
+  closeEducationForm = (e) => {
+    e.preventDefault();
+    console.log('porcamadonnaaaaaaaaaaaaaaaaa')
+    this.setState({
+      showEducation: false,
+    })
+    console.log(this.state.showEducation)
+  }
+
+  onSubmitEducation = (e) => {
+    e.preventDefault(); //prevents the default behavior which is to refresh the page
+    this.setState({
+      education_list: this.state.education.concat(this.state.education),
+      education: {
+        university: '',
+        from_year: '',
+        to_year: '',
+        degree: ''
+      },
+    });
   }
 
 
@@ -87,10 +110,10 @@ class App extends Component {
           <div className="single-input long-input">
             <span>Education (optional)</span>
             {this.state.showEducation ? 
-              <Education /> :
+              <Education closeEducationForm = {this.closeEducationForm} /> :
               closedEducationForm()
             }
-
+            {/* Education imports the component and using this makes the function usable by the child component */}
           </div>
           <div className="single-input long-input">
             <span>Work Experience</span>
