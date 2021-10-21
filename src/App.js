@@ -15,9 +15,27 @@ class App extends Component {
       showEducation: false,
       showWork: false,
       showAddButton: false,
+      education: {
+        university: '',
+        from_year: '',
+        to_year: '',
+        degree: ''
+      },
+      education_list: [],
+      work: {
+        company: '',
+        city: '',
+        from_year: '',
+        to_year: '',
+        role: '',
+        description: ''        
+      },
+      work_list: [],
     };
     this.addEducation = this.addEducation.bind(this);
     this.closeEducationForm = this.closeEducationForm.bind(this);
+    this.onChangeEducation = this.onChangeEducation.bind(this);
+    this.onSubmitEducation = this.onSubmitEducation.bind(this);
   }
 
   addEducation() {
@@ -33,6 +51,28 @@ class App extends Component {
       showEducation: false,
     })
     console.log(this.state.showEducation)
+  }
+  onChangeEducation = (e) => {
+    this.setState({
+      education: {
+        university: e.target.value,
+        from_year: e.target.value,
+        to_year: e.target.value,
+        degree: e.target.value,
+      }
+    });
+  }
+  onSubmitEducation = (e) => {
+    e.preventDefault(); //prevents the default behavior which is to refresh the page
+    this.setState({
+      education_list: this.state.education_list.concat(this.state.education),
+      education: {
+        university: '',
+        from_year: '',
+        to_year: '',
+        degree: ''
+      },
+    });
   }
 
   render() {
@@ -95,14 +135,17 @@ class App extends Component {
           </div>
           <div className="single-input long-input">
             <span>Education (optional)</span>
-            <EducationOverview
-            />
             {this.state.showEducation ? 
               <Education  closeEducationForm = {this.closeEducationForm}
+                          onChangeEducation = {this.onChangeEducation}
+                          onSubmitEducation = {this.onSubmitEducation}
+                          education = {this.state.education}
               /> :
               closedEducationForm()
             }
             {/* Education imports the component and using this makes the function usable by the child component */}
+            <EducationOverview education_list = {this.state.education_list}
+            />
           </div>
           <div className="single-input long-input">
             <span>Work Experience</span>

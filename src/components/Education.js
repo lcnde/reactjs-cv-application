@@ -4,56 +4,10 @@ class Education extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      education: {
-        university: '',
-        from_year: '',
-        to_year: '',
-        degree: ''
-      },
-      education_list: [],
-      work: {
-        company: '',
-        city: '',
-        from_year: '',
-        to_year: '',
-        role: '',
-        description: ''        
-      },
-      work_list: [],
-    };
+    this.state = {};
   }
-
-
-
-  onChangeEducation = (e) => {
-    this.setState({
-      education: {
-        university: e.target.value,
-        from_year: e.target.value,
-        to_year: e.target.value,
-        degree: e.target.value,
-      }
-    });
-  }
-
-  onSubmitEducation = (e) => {
-    e.preventDefault(); //prevents the default behavior which is to refresh the page
-    this.setState({
-      education_list: this.state.education_list.concat(this.state.education),
-      education: {
-        university: '',
-        from_year: '',
-        to_year: '',
-        degree: ''
-      },
-    });
-  }
-
 
   render() {
-    const { education, education_list, work, work_list } = this.state; //deconstructor so you don't have to call this.state every time
-
     const currentYear = (new Date()).getFullYear();
     const dropdownYears = Array.from(new Array(70),
                           (val, index) => (index-69) + currentYear);
@@ -66,8 +20,8 @@ class Education extends Component {
             type="text" 
             id="school" 
             name="school"
-            onChange={this.onChangeEducation}
-            value={education.university} //this.state....
+            onChange={this.props.onChangeEducation}
+            value={this.props.education.university} //this.state....
           ></input>
         </div>
         <div className="single-input">
@@ -101,7 +55,7 @@ class Education extends Component {
         </button> {/*use type="button" so the form does not submit when you press the button because it understands it is a common button and not a submit one*/}
         <button type="button" 
                 className="add-button send"
-                onClick={this.onSubmitEducation}>                
+                onClick={this.props.onSubmitEducation}>                
           Add
         </button>
       </div>
