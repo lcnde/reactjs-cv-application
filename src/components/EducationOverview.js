@@ -12,7 +12,14 @@ class EducationOverview extends Component {
       <ul>
         {
           this.props.education_list.map((e) => {
-            return <li>{e.university}</li>
+            return (
+              <div className="education-card">
+                <li>{e.university}</li>
+                <li>{e.from_year}</li>
+                <li>{e.to_year}</li>
+                <li>{e.degree}</li>
+              </div>
+            )
           })
         }
       </ul>

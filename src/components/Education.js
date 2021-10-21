@@ -20,13 +20,17 @@ class Education extends Component {
             type="text" 
             id="school" 
             name="school"
-            onChange={this.props.onChangeEducation}
+            onChange={this.props.handleChangeUniversity}
             value={this.props.education.university} //this.state....
           ></input>
         </div>
         <div className="single-input">
           <label htmlFor="from-year">From year</label>
-          <select id="from-year" name="from-year">
+          <select id="from-year" 
+                  name="from-year"
+
+                  value={this.props.education.from_year}
+          >
             {
               dropdownYears.map((year, index) => {
                 return <option value={year}>{year}</option>
@@ -36,7 +40,11 @@ class Education extends Component {
         </div>
         <div className="single-input">
           <label htmlFor="to-year">From year</label>
-          <select id="to-year" name="to-year">
+          <select id="to-year" 
+                  name="to-year"
+                  onChange = {this.props.handleChangeEdFromYear}
+                  value={this.props.education.to_year}
+          >
             {
               dropdownYears.map((year, index) => {
                 return <option value={year}>{year}</option>
@@ -46,7 +54,12 @@ class Education extends Component {
         </div>
         <div className="single-input long-input">
           <label htmlFor="degree">Qualification / Degree</label>
-          <input type="text" id="degree" name="degree"></input>
+          <input  type="text" 
+                  id="degree" 
+                  name="degree"
+
+                  value={this.props.education.degree}
+          ></input>
         </div>
         <button type="button" 
                 className="cancel-button send" 

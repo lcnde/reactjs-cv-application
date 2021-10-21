@@ -34,7 +34,8 @@ class App extends Component {
     };
     this.addEducation = this.addEducation.bind(this);
     this.closeEducationForm = this.closeEducationForm.bind(this);
-    this.onChangeEducation = this.onChangeEducation.bind(this);
+    this.handleChangeUniversity = this.handleChangeUniversity.bind(this);
+    this.handleChangeEdFromYear = this.handleChangeEdFromYear.bind(this);
     this.onSubmitEducation = this.onSubmitEducation.bind(this);
   }
 
@@ -43,6 +44,7 @@ class App extends Component {
       showEducation: true,
     })
     console.log(this.state.showEducation)
+    console.log(this.state.showWork)
   }
 
   closeEducationForm = (e) => {
@@ -52,16 +54,22 @@ class App extends Component {
     })
     console.log(this.state.showEducation)
   }
-  onChangeEducation = (e) => {
+  handleChangeUniversity = (e) => {
+    this.setState(prevState => {
+      let education = Object.assign({}, prevState.education);
+      education.university = e.target.value;
+      return { education }
+    })
+  }
+  handleChangeEdFromYear = (e) => {
     this.setState({
       education: {
-        university: e.target.value,
         from_year: e.target.value,
-        to_year: e.target.value,
-        degree: e.target.value,
       }
-    });
+    })
   }
+  
+
   onSubmitEducation = (e) => {
     e.preventDefault(); //prevents the default behavior which is to refresh the page
     this.setState({
@@ -137,7 +145,8 @@ class App extends Component {
             <span>Education (optional)</span>
             {this.state.showEducation ? 
               <Education  closeEducationForm = {this.closeEducationForm}
-                          onChangeEducation = {this.onChangeEducation}
+                          handleChangeUniversity = {this.handleChangeUniversity}
+                          handleChangeEdFromYear = {this.handleChangeEdFromYear}
                           onSubmitEducation = {this.onSubmitEducation}
                           education = {this.state.education}
               /> :
