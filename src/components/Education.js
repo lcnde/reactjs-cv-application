@@ -37,6 +37,19 @@ class Education extends Component {
     });
   }
 
+  onSubmitEducation = (e) => {
+    e.preventDefault(); //prevents the default behavior which is to refresh the page
+    this.setState({
+      education_list: this.state.education_list.concat(this.state.education),
+      education: {
+        university: '',
+        from_year: '',
+        to_year: '',
+        degree: ''
+      },
+    });
+  }
+
 
   render() {
     const { education, education_list, work, work_list } = this.state; //deconstructor so you don't have to call this.state every time
@@ -46,7 +59,7 @@ class Education extends Component {
                           (val, index) => (index-69) + currentYear);
 
     return (
-      <div className="form">
+      <div className="sub-form">
         <div className="single-input long-input">
           <label htmlFor="school">University or School</label>
           <input 
@@ -81,8 +94,16 @@ class Education extends Component {
           <label htmlFor="degree">Qualification / Degree</label>
           <input type="text" id="degree" name="degree"></input>
         </div>
-        <button type="button" className="cancel-button send" onClick={this.props.closeEducationForm}>Cancel</button> {/*use type="button" so the form does not submit when you press the button because it understands it is a common button and not a submit one*/}
-        <button type="button" className="add-button send">Add</button>
+        <button type="button" 
+                className="cancel-button send" 
+                onClick={this.props.closeEducationForm}>
+          Cancel
+        </button> {/*use type="button" so the form does not submit when you press the button because it understands it is a common button and not a submit one*/}
+        <button type="button" 
+                className="add-button send"
+                onClick={this.onSubmitEducation}>                
+          Add
+        </button>
       </div>
     )
   }

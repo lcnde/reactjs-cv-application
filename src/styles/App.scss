@@ -33,7 +33,7 @@ h1 {
   }
 }
 
-form, .form {
+form {
   color: black;
   width: 100%;
   display: grid;
@@ -42,6 +42,16 @@ form, .form {
   row-gap: 40px;
   font-size: 18px;
   padding: 40px 0;
+}
+.sub-form {
+  color: black;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  row-gap: 20px;
+  font-size: 18px;
+  padding: 20px 0;
 }
 
 .long-input {
@@ -96,9 +106,6 @@ form, .form {
   border-radius: 100px;
   cursor: pointer;
 }
-.add-button {
-  background-color: green;
-}
 .cancel-button {
-  background-color: red;
+  background-color: rgb(167, 56, 56);
 }

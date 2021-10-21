@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
 import './styles/Education.scss';
+import './styles/EducationOverview.scss'
 import odinLogo from './assets/logo.png';
 import addIcon from './assets/add-icon.png';
 import Education from './components/Education.js';
+import EducationOverview from './components/EducationOverview.js';
 
 class App extends Component {
   constructor(props) {
@@ -27,27 +29,11 @@ class App extends Component {
 
   closeEducationForm = (e) => {
     e.preventDefault();
-    console.log('porcamadonnaaaaaaaaaaaaaaaaa')
     this.setState({
       showEducation: false,
     })
     console.log(this.state.showEducation)
   }
-
-  onSubmitEducation = (e) => {
-    e.preventDefault(); //prevents the default behavior which is to refresh the page
-    this.setState({
-      education_list: this.state.education.concat(this.state.education),
-      education: {
-        university: '',
-        from_year: '',
-        to_year: '',
-        degree: ''
-      },
-    });
-  }
-
-
 
   render() {
     const closedEducationForm = () => {
@@ -109,8 +95,11 @@ class App extends Component {
           </div>
           <div className="single-input long-input">
             <span>Education (optional)</span>
+            <EducationOverview
+            />
             {this.state.showEducation ? 
-              <Education closeEducationForm = {this.closeEducationForm} /> :
+              <Education  closeEducationForm = {this.closeEducationForm}
+              /> :
               closedEducationForm()
             }
             {/* Education imports the component and using this makes the function usable by the child component */}
