@@ -22,15 +22,17 @@ class Education extends Component {
             name="school"
             onChange={this.props.handleChangeUniversity}
             value={this.props.education.university} //this.state....
+            required
           ></input>
         </div>
         <div className="single-input">
           <label htmlFor="from-year">From year</label>
           <select id="from-year" 
                   name="from-year"
-
+                  onChange={this.props.handleChangeEdFromYear}
                   value={this.props.education.from_year}
           >
+            <option value="" disabled selected hidden>Select year</option>
             {
               dropdownYears.map((year, index) => {
                 return <option value={year}>{year}</option>
@@ -39,12 +41,13 @@ class Education extends Component {
           </select>
         </div>
         <div className="single-input">
-          <label htmlFor="to-year">From year</label>
+          <label htmlFor="to-year">To year</label>
           <select id="to-year" 
                   name="to-year"
-                  onChange = {this.props.handleChangeEdFromYear}
+                  onChange = {this.props.handleChangeEdToYear}
                   value={this.props.education.to_year}
           >
+            <option value="" disabled selected hidden>Select year</option>
             {
               dropdownYears.map((year, index) => {
                 return <option value={year}>{year}</option>
@@ -57,7 +60,7 @@ class Education extends Component {
           <input  type="text" 
                   id="degree" 
                   name="degree"
-
+                  onChange = {this.props.handleChangeDegree}
                   value={this.props.education.degree}
           ></input>
         </div>

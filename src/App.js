@@ -36,6 +36,8 @@ class App extends Component {
     this.closeEducationForm = this.closeEducationForm.bind(this);
     this.handleChangeUniversity = this.handleChangeUniversity.bind(this);
     this.handleChangeEdFromYear = this.handleChangeEdFromYear.bind(this);
+    this.handleChangeEdToYear = this.handleChangeEdToYear.bind(this);
+    this.handleChangeDegree = this.handleChangeDegree.bind(this);
     this.onSubmitEducation = this.onSubmitEducation.bind(this);
   }
 
@@ -44,7 +46,7 @@ class App extends Component {
       showEducation: true,
     })
     console.log(this.state.showEducation)
-    console.log(this.state.showWork)
+    console.log(this.state.education.university)
   }
 
   closeEducationForm = (e) => {
@@ -58,29 +60,51 @@ class App extends Component {
     this.setState(prevState => {
       let education = Object.assign({}, prevState.education);
       education.university = e.target.value;
-      return { education }
+      return { education };
     })
   }
   handleChangeEdFromYear = (e) => {
-    this.setState({
-      education: {
-        from_year: e.target.value,
-      }
+    this.setState(prevState => {
+      let education = Object.assign({}, prevState.education);
+      education.from_year = e.target.value;
+      return { education };
+    })
+  }
+  handleChangeEdToYear = (e) => {
+    this.setState(prevState => {
+      let education = Object.assign({}, prevState.education);
+      education.to_year = e.target.value;
+      return { education };
+    })
+  }
+  handleChangeDegree = (e) => {
+    this.setState(prevState => {
+      let education = Object.assign({}, prevState.education);
+      education.degree = e.target.value;
+      return { education };
     })
   }
   
 
   onSubmitEducation = (e) => {
     e.preventDefault(); //prevents the default behavior which is to refresh the page
-    this.setState({
-      education_list: this.state.education_list.concat(this.state.education),
-      education: {
-        university: '',
-        from_year: '',
-        to_year: '',
-        degree: ''
-      },
-    });
+    if (this.state.education.university === '' ||
+        this.state.education.from_year === '' ||
+        this.state.education.to_year === '' ||
+        this.state.education.degree === '') {
+      alert("Can't leave fields empty");
+    } else {
+      this.setState({
+        education_list: this.state.education_list.concat(this.state.education),
+        education: {
+          university: '',
+          from_year: '',
+          to_year: '',
+          degree: ''
+        },
+      });
+      this.closeEducationForm(e);
+    }
   }
 
   render() {
@@ -136,7 +160,7 @@ class App extends Component {
           <div className="single-input long-input">
             <label htmlFor="occupation">Current occupation</label>
             <select id="occupation" name="cars">
-              <option value="" disabled selected>Employed / Not employed</option>
+              <option value="" disabled selected hidden>Employed / Not employed</option>
               <option value="employed">Employed</option>
               <option value="not-employed">Not Employed</option>
             </select>
@@ -147,6 +171,8 @@ class App extends Component {
               <Education  closeEducationForm = {this.closeEducationForm}
                           handleChangeUniversity = {this.handleChangeUniversity}
                           handleChangeEdFromYear = {this.handleChangeEdFromYear}
+                          handleChangeEdToYear = {this.handleChangeEdToYear}
+                          handleChangeDegree = {this.handleChangeDegree}
                           onSubmitEducation = {this.onSubmitEducation}
                           education = {this.state.education}
               /> :
