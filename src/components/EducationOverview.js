@@ -9,7 +9,8 @@ class EducationOverview extends Component {
 
   render() {
     return(
-      <ul>
+      <div>
+        <h1>hi</h1>
         {
           this.props.education_list.map((e) => {
             return (
@@ -22,7 +23,7 @@ class EducationOverview extends Component {
             )
           })
         }
-      </ul>
+      </div>
     )
   }
 }

@@ -39,6 +39,7 @@ class App extends Component {
     this.handleChangeEdToYear = this.handleChangeEdToYear.bind(this);
     this.handleChangeDegree = this.handleChangeDegree.bind(this);
     this.onSubmitEducation = this.onSubmitEducation.bind(this);
+    this.displayEducationIfTrue = this.displayEducationIfTrue.bind(this);
   }
 
   addEducation() {
@@ -49,6 +50,11 @@ class App extends Component {
     console.log(this.state.education.university)
   }
 
+  displayEducationIfTrue() {
+    if (this.state.education_list.length !== 0) {
+      return <EducationOverview education_list = {this.state.education_list} />
+    }
+  }
   closeEducationForm = (e) => {
     e.preventDefault();
     this.setState({
@@ -179,8 +185,7 @@ class App extends Component {
               closedEducationForm()
             }
             {/* Education imports the component and using this makes the function usable by the child component */}
-            <EducationOverview education_list = {this.state.education_list}
-            />
+            {this.displayEducationIfTrue()}
           </div>
           <div className="single-input long-input">
             <span>Work Experience</span>
