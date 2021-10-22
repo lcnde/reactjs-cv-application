@@ -1,4 +1,22 @@
-.education-card {
+
+
+.education-container {
   width: 100%;
-  box-shadow: 5px 6px 10px 3px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  padding: 20px 10px;
+  color: #b3b3b3;
+}
+
+.education-card {
+  padding: 20px;
+  margin: 10px 0 0 0;
+  box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.20);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+
+  .years-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

@@ -186,6 +186,19 @@ class App extends Component {
             }
             {/* Education imports the component and using this makes the function usable by the child component */}
             {this.displayEducationIfTrue()}
+            {/*
+            <div className="education-container">
+              <h2>Degree</h2> 
+              <div className="education-card">
+                <div>Universita degli studi di salerno</div>
+                <div className="years-container">
+                  <div>From year: 2020</div>
+                  <div>To year: 2021</div>
+                </div>
+                <div>Economai e management e informatica degree</div>
+              </div>
+            </div>
+                */}
           </div>
           <div className="single-input long-input">
             <span>Work Experience</span>

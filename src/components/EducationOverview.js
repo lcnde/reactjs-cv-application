@@ -9,16 +9,18 @@ class EducationOverview extends Component {
 
   render() {
     return(
-      <div>
-        <h1>hi</h1>
+      <div className="education-container">
+        <h2>Degree</h2>
         {
           this.props.education_list.map((e) => {
             return (
               <div className="education-card">
-                <li>{e.university}</li>
-                <li>{e.from_year}</li>
-                <li>{e.to_year}</li>
-                <li>{e.degree}</li>
+                <div>{e.university}</div>
+                <div className="years-container">
+                  <div>From year: {e.from_year}</div>
+                  <div>To year: {e.to_year}</div>
+                </div>
+                <div>{e.degree} degree</div>
               </div>
             )
           })
