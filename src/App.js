@@ -3,11 +3,13 @@ import './styles/App.scss';
 import './styles/Education.scss';
 import './styles/EducationOverview.scss';
 import './styles/Work.scss';
+import './styles/WorkOverview.scss';
 import odinLogo from './assets/logo.png';
 import addIcon from './assets/add-icon.png';
 import Education from './components/Education.js';
 import EducationOverview from './components/EducationOverview.js';
 import Work from './components/Work.js';
+import WorkOverview from './components/WorkOverview.js';
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +58,7 @@ class App extends Component {
     this.onSubmitWork = this.onSubmitWork.bind(this);
 
     this.displayEducationIfTrue = this.displayEducationIfTrue.bind(this);
+    this.displayWorkIfTrue = this.displayWorkIfTrue.bind(this);
   }
 
   addEducation() {
@@ -78,6 +81,12 @@ class App extends Component {
       return <EducationOverview education_list = {this.state.education_list} />
     }
   }
+  displayWorkIfTrue() {
+    if (this.state.work_list.length !== 0) {
+      return <WorkOverview work_list = {this.state.work_list} />
+    }
+  }
+
   closeEducationForm = (e) => {
     e.preventDefault();
     this.setState({
@@ -321,6 +330,23 @@ class App extends Component {
             /> :
             closedWorkForm() 
             }
+            {this.displayWorkIfTrue()}
+            {/*
+            <div className="education-container">
+              <h2>Work Experience</h2>
+              <div className="work-card">
+                <div className="work-card-left">
+                  <div>Microsoft</div>
+                  <div>Nevada, US</div>
+                  <div>1980-2030</div>
+                </div>
+                <div className="work-card-right">
+                  <div>Junior Senior Developer</div>
+                  <div className="resp">My responsibility was to make sure that windows updates were forced on users wether they wanted it or not</div>
+                </div>
+              </div>
+            </div>
+            */}
           </div>
           <button className="long-input send" type="submit" value="Submit">Send</button>
         </form>
