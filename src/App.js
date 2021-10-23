@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
 import './styles/Education.scss';
-import './styles/EducationOverview.scss'
+import './styles/EducationOverview.scss';
+import './styles/Work.scss';
 import odinLogo from './assets/logo.png';
 import addIcon from './assets/add-icon.png';
 import Education from './components/Education.js';
 import EducationOverview from './components/EducationOverview.js';
+import Work from './components/Work.js';
 
 class App extends Component {
   constructor(props) {
@@ -33,12 +35,26 @@ class App extends Component {
       work_list: [],
     };
     this.addEducation = this.addEducation.bind(this);
+    this.addWork = this.addWork.bind(this);
+
     this.closeEducationForm = this.closeEducationForm.bind(this);
+    this.closeWorkForm = this.closeWorkForm.bind(this);
+
     this.handleChangeUniversity = this.handleChangeUniversity.bind(this);
     this.handleChangeEdFromYear = this.handleChangeEdFromYear.bind(this);
     this.handleChangeEdToYear = this.handleChangeEdToYear.bind(this);
     this.handleChangeDegree = this.handleChangeDegree.bind(this);
+
+    this.handleChangeCompany = this.handleChangeCompany.bind(this);
+    this.handleChangeCity = this.handleChangeCity.bind(this);
+    this.handleChangeWoFromYear = this.handleChangeWoFromYear.bind(this);
+    this.handleChangeWoToYear = this.handleChangeWoToYear.bind(this);
+    this.handleChangeRole = this.handleChangeRole.bind(this);
+    this.handleChangeDescription = this.handleChangeDescription.bind(this);
+
     this.onSubmitEducation = this.onSubmitEducation.bind(this);
+    this.onSubmitWork = this.onSubmitWork.bind(this);
+
     this.displayEducationIfTrue = this.displayEducationIfTrue.bind(this);
   }
 
@@ -48,6 +64,13 @@ class App extends Component {
     })
     console.log(this.state.showEducation)
     console.log(this.state.education.university)
+  }
+  addWork() {
+    this.setState({
+      showWork: true,
+    })
+    console.log(this.state.showWork)
+    console.log(this.state.work.company)
   }
 
   displayEducationIfTrue() {
@@ -62,6 +85,14 @@ class App extends Component {
     })
     console.log(this.state.showEducation)
   }
+  closeWorkForm = (e) => {
+    e.preventDefault();
+    this.setState({
+      showWork: false,
+    })
+    console.log(this.state.showWork)
+  }
+
   handleChangeUniversity = (e) => {
     this.setState(prevState => {
       let education = Object.assign({}, prevState.education);
@@ -90,7 +121,49 @@ class App extends Component {
       return { education };
     })
   }
-  
+
+  handleChangeCompany = (e) => {
+    this.setState(prevState => {
+      let work = Object.assign({}, prevState.work);
+      work.company = e.target.value;
+      return { work }
+    })
+  }
+  handleChangeCity = (e) => {
+    this.setState(prevState => {
+      let work = Object.assign({}, prevState.work);
+      work.city = e.target.value;
+      return { work }
+    })
+  }
+  handleChangeWoFromYear = (e) => {
+    this.setState(prevState => {
+      let work = Object.assign({}, prevState.work);
+      work.from_year = e.target.value;
+      return { work }
+    })
+  }
+  handleChangeWoToYear = (e) => {
+    this.setState(prevState => {
+      let work = Object.assign({}, prevState.work);
+      work.to_year = e.target.value;
+      return { work }
+    })
+  }
+  handleChangeRole = (e) => {
+    this.setState(prevState => {
+      let work = Object.assign({}, prevState.work);
+      work.role = e.target.value;
+      return { work }
+    })
+  }
+  handleChangeDescription = (e) => {
+    this.setState(prevState => {
+      let work = Object.assign({}, prevState.work);
+      work.description = e.target.value;
+      return { work }
+    })
+  }
 
   onSubmitEducation = (e) => {
     e.preventDefault(); //prevents the default behavior which is to refresh the page
@@ -112,11 +185,43 @@ class App extends Component {
       this.closeEducationForm(e);
     }
   }
+  onSubmitWork = (e) => {
+    e.preventDefault();
+    if (this.state.work.company === '' ||
+        this.state.work.city === '' ||
+        this.state.work.from_year === '' ||
+        this.state.work.to_year === '' ||
+        this.state.work.role === '' ||
+        this.state.work.description === '') {
+          alert("Can't leave fields empty");
+    } else {
+      this.setState({
+        work_list: this.state.work_list.concat(this.state.work),
+        work: {
+          company: '',
+          city: '',
+          from_year: '',
+          to_year: '',
+          role: '',
+          description: ''  
+        }
+      })
+      this.closeWorkForm(e);
+    }
+  }
 
   render() {
     const closedEducationForm = () => {
       return (
         <div className="input-mock" onClick={this.addEducation}>
+          <img className="add-icon" src={addIcon} alt="Icon that displays a + sign" />
+          <span>Add</span>
+        </div>
+      )
+    }
+    const closedWorkForm = () => {
+      return (
+        <div className="input-mock" onClick={this.addWork}>
           <img className="add-icon" src={addIcon} alt="Icon that displays a + sign" />
           <span>Add</span>
         </div>
@@ -202,10 +307,20 @@ class App extends Component {
           </div>
           <div className="single-input long-input">
             <span>Work Experience</span>
-            <div className="input-mock">
-              <img className="add-icon" src={addIcon} alt="Icon that displays a + sign" />
-              <span>Add</span>
-            </div>
+            {
+            this.state.showWork ?
+            <Work closeWorkForm = {this.closeWorkForm}
+                  onSubmitWork = {this.onSubmitWork}
+                  handleChangeCompany = {this.handleChangeCompany}
+                  handleChangeCity = {this.handleChangeCity}
+                  handleChangeWoFromYear = {this.handleChangeWoFromYear}
+                  handleChangeWoToYear = {this.handleChangeWoToYear}
+                  handleChangeRole = {this.handleChangeRole}
+                  handleChangeDescription = {this.handleChangeDescription}
+                  work = {this.state.work}
+            /> :
+            closedWorkForm() 
+            }
           </div>
           <button className="long-input send" type="submit" value="Submit">Send</button>
         </form>
